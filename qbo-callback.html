@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBooks Authorization - JobTread Department Sync</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .success {
+            color: #27ae60;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .code-container {
+            background: #f8f9fa;
+            border: 2px solid #27ae60;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .code {
+            font-family: monospace;
+            font-size: 18px;
+            color: #2c3e50;
+            word-break: break-all;
+        }
+        .instructions {
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="success">✓ Authorization Successful!</div>
+    
+    <p>Your QuickBooks Online account has been successfully authorized.</p>
+    
+    <div class="code-container">
+        <p><strong>Authorization Code:</strong></p>
+        <div class="code" id="authCode">Loading...</div>
+    </div>
+    
+    <div class="instructions">
+        <p>Copy the authorization code above and paste it into your Python script when prompted.</p>
+        <p>You can close this window after copying the code.</p>
+    </div>
+
+    <script>
+        // Extract the authorization code from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const realmId = urlParams.get('realmId');
+        
+        if (code) {
+            document.getElementById('authCode').textContent = code;
+        } else {
+            document.getElementById('authCode').textContent = 'No authorization code found. Please try again.';
+            document.getElementById('authCode').style.color = '#e74c3c';
+        }
+    </script>
+</body>
+</html>
